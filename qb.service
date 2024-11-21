@@ -1,0 +1,14 @@
+[Unit]
+Description=QuantumBot Surveillance Software
+After=network.target display-manager.service
+
+[Service]
+User=tipl-qb
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/tipl-qb/.Xauthority
+WorkingDirectory=/opt/qb_files
+ExecStart=/opt/qb_files/qb
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

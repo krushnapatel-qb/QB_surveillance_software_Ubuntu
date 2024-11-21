@@ -1,0 +1,6 @@
+#!/bin/bash
+loginctl enable-linger tipl-qb
+sudo systemctl daemon-reload
+sudo systemctl enable qb.service
+sudo systemctl start qb.service
+sudo chmod -R 777 /opt/qb_files

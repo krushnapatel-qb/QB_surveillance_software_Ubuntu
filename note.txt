@@ -1,0 +1,145 @@
+20Nov
+
+GNOME_KEYRING_CONTROL=/home/tipl-qb/.cache/keyring-F9H8W2
+
+not working
+[Unit]
+Description=QuantumBot Surveillance Software
+After=network.target display-manager.service
+
+[Service]
+User=tipl-qb
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/tipl-qb/.Xauthority
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u tipl-qb)/bus
+Environment=KAFKA_BOOTSTRAP_SERVERS=192.168.1.202:9092
+EnvironmentFile=/home/tipl-qb/.profile
+WorkingDirectory=/opt/qb_files
+ExecStart=/opt/qb_files/qb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+not working
+[Unit]
+Description=QuantumBot Surveillance Software
+After=network.target display-manager.service
+
+[Service]
+User=tipl-qb
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/tipl-qb/.Xauthority
+Environment=KAFKA_BOOTSTRAP_SERVERS=192.168.1.202:9092
+WorkingDirectory=/opt/qb_files
+ExecStart=/opt/qb_files/qb
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+
+not working
+[Unit]
+Description=QuantumBot Surveillance Software
+After=network.target display-manager.service
+
+[Service]
+User=tipl-qb
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/tipl-qb/.Xauthority
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u tipl-qb)/bus
+WorkingDirectory=/opt/qb_files
+ExecStart=/opt/qb_files/qb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+works partially
+[Unit]
+Description=QuantumBot Surveillance Software
+After=network.target display-manager.service
+
+[Service]
+User=tipl-qb
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/tipl-qb/.Xauthority
+WorkingDirectory=/opt/qb_files
+ExecStart=/opt/qb_files/qb
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+(starts service and application instance right after installation and also manually by desktop menu instance
+but the .service instance doesn't work properly)
+
+---------------------------------------------------------------------------------------
+
+-rwxrwxr-x qb.service
+-rw-rw-r-- qb.desktop
+-rwxrwxr-x
+-rwxrwxr-x qb.service.in
+-rw-rw-r-- qb.desktop.in
+-rwxrwxr-x install_service.sh
+-rwxrwxr-x preinst
+-rwxrwxr-x postinst
+-rwxrwxr-x postrm
+
+
+#ExecStart=/usr/bin/python3 main.py
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=qb
+Exec=/opt/myapp/qb
+Icon=/opt/myapp/icon.png  # Change this to your app's icon path
+Terminal=false
+Categories=Utility;Application;
+
+DESTINATION "/usr/share/icons/hicolor/48x48/apps"
+
+Environment=XAUTHORITY=/home/tipl-qb/.Xauthority
+
+---------------------------------------------------------------------------------------
+[Unit]
+Description=QuantumBot Surveillance Software
+
+[Service]
+ExecStart=/opt/myapp/install_service.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Description=QuantumBot Surveillance Software
+After=network.target display-manager.service
+
+[Service]
+User=tipl-qb
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/tipl-qb/.Xauthority
+WorkingDirectory=/opt/myapp
+ExecStart=/opt/myapp/qb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Description=QuantumBot Surveillance Software
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=${INSTALL_DIR}/qb  # Ensure this path points correctly to qb
+WorkingDirectory=${INSTALL_DIR}
+User=your_user_name   # Replace with the user that has permissions for screenshots
+Environment="DISPLAY=:0"  # Set the display if it's a GUI application
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

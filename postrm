@@ -1,0 +1,16 @@
+#!/bin/bash
+# Define the custom password
+CUSTOM_PASSWORD="tipl#789"  # Replace with your desired password
+
+# Prompt for password
+echo -n "Enter uninstallation password: "
+read -s INPUT_PASSWORD
+echo
+
+# Check if the entered password matches the custom password
+if [ "$INPUT_PASSWORD" != "$CUSTOM_PASSWORD" ]; then
+    echo "Incorrect password. Uninstallation aborted."
+    exit 1
+fi
+
+echo "Password correct. Proceeding with uninstallation..."

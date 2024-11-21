@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=qb
+Exec=/opt/qb_files/qb
+Icon=/opt/qb_files/qb_logo.png
+Terminal=false
+Categories=Utility;Application;
