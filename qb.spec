@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('/home/tipl-qb/Desktop/SS_20Nov/media','media')],
+    datas=[('/home/tipl-qb/Desktop/SS_21Nov/media','media')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
